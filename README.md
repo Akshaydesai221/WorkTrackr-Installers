@@ -58,9 +58,20 @@ Everything below is optional. WorkTrackr works fully without any of it. Each has
 - **AI (Google Gemini, free)** — get a free key at [aistudio.google.com/apikey](https://aistudio.google.com/apikey), paste it into Settings, and WorkTrackr will rewrite your timesheet comments and write the hourly summaries. Anthropic Claude is also supported.
 - **Redmine** — enter your Redmine base URL (e.g. `https://redmine.yourcompany.com`) and your API key (Redmine > My account > API access key), then click Test Connection. You can push timesheet hours to Redmine as time entries.
 - **GitHub** — add a read-only personal access token to pull in your commits, pull requests, reviews and issues.
-- **Browser extension** — a companion Chrome extension (in the main project) adds per-site web activity for more accurate timesheets.
+- **Browser extension (bundled)** — a companion Chrome/Edge extension adds per-site web activity, so a day in the browser becomes real named activity instead of a blur. It is included with the install (see below).
 
 Privacy: before any text is sent to an AI provider, URLs, emails, domain names and your own redaction terms are stripped, so client and company names stay on your machine.
+
+## Browser extension (optional)
+
+The extension is installed alongside the app in the `browser-extension` folder inside your install directory. To load it:
+
+1. Open your browser's extensions page: `chrome://extensions` (Chrome) or `edge://extensions` (Edge).
+2. Turn on **Developer mode** (top right).
+3. Click **Load unpacked** and select the `browser-extension` folder in your WorkTrackr install directory.
+4. That is it. It talks to WorkTrackr on `http://localhost:8081` by default. If you installed WorkTrackr on a different port, open the extension's popup (its icon in the toolbar) and set the matching address.
+
+The extension only reads the active tab's URL, domain, title and idle/engagement state, and sends it to WorkTrackr on your own machine. Nothing goes anywhere else.
 
 ## Uninstall
 

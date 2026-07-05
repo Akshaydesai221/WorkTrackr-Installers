@@ -2,7 +2,7 @@
 
 One-click installers for **WorkTrackr**, a local activity tracker and timesheet. Java is bundled inside each installer, so there is nothing else to install.
 
-WorkTrackr runs entirely on your own machine. Nothing is sent anywhere.
+WorkTrackr runs entirely on your own machine. Your activity never leaves your computer; only the optional integrations below send anything out, and only what they need.
 
 ## Download
 
@@ -11,13 +11,20 @@ Get the latest installer from the [releases page](https://github.com/Akshaydesai
 - **Windows:** `WorkTrackr-1.0.0-windows-x64-installer.exe`
 - **Linux (Ubuntu):** `WorkTrackr-1.0.0-linux-x64-installer.run`
 
+## What it does
+
+- Records the app and window you are using in the background and turns it into a clear timesheet.
+- Rolls your day up into an application summary and an hour-by-hour view.
+- Suggests timesheet entries from your tracked activity, which you can edit however you like, and export as CSV.
+- Optional integrations add detail: web activity, calendar meetings, code activity and issue tracking.
+
 ## Windows
 
 1. Download and run the `.exe`. No administrator rights are needed.
 2. Choose an install folder and a **web port** (default `8081`). Change the port only if `8081` is already in use.
 3. Finish. WorkTrackr starts immediately, runs hidden in the background, and starts on its own every time you log in.
 4. Open the dashboard from the Start Menu (**WorkTrackr > Open WorkTrackr**) or browse to `http://localhost:<port>/`.
-5. On first launch the dashboard asks you to create an admin account.
+5. On first launch the dashboard asks you to create an admin account (a new install starts with the login `1` / `1`).
 
 Start Menu folder **WorkTrackr**: Open, Start, Stop, Uninstall.
 
@@ -43,12 +50,22 @@ Modern Ubuntu defaults to Wayland, which blocks reading other windows. At the lo
 
 If auto-start did not kick in, open a terminal in the install folder and run `./install-autostart-linux.sh` once.
 
-Open the dashboard at `http://localhost:<port>/` and create an admin account on first launch.
+## Optional integrations (all set up in Settings)
+
+Everything below is optional. WorkTrackr works fully without any of it. Each has step-by-step help on its Settings screen.
+
+- **Google Calendar** — click "Continue with Google" and sign in. It reads your events (read-only) and lists your meetings, ready to add to your timesheet. Browser video calls (Google Meet, Microsoft Teams, Zoom) are detected automatically even without this.
+- **AI (Google Gemini, free)** — get a free key at [aistudio.google.com/apikey](https://aistudio.google.com/apikey), paste it into Settings, and WorkTrackr will rewrite your timesheet comments and write the hourly summaries. Anthropic Claude is also supported.
+- **Redmine** — enter your Redmine base URL (e.g. `https://redmine.yourcompany.com`) and your API key (Redmine > My account > API access key), then click Test Connection. You can push timesheet hours to Redmine as time entries.
+- **GitHub** — add a read-only personal access token to pull in your commits, pull requests, reviews and issues.
+- **Browser extension** — a companion Chrome extension (in the main project) adds per-site web activity for more accurate timesheets.
+
+Privacy: before any text is sent to an AI provider, URLs, emails, domain names and your own redaction terms are stripped, so client and company names stay on your machine.
 
 ## Uninstall
 
 - **Windows:** Start Menu **WorkTrackr > Uninstall WorkTrackr**, or run `uninstall.exe` in the install folder.
-- **Linux:** run `~/WorkTrackr/uninstall` (or the uninstaller in your chosen folder).
+- **Linux:** run the `uninstall` in your chosen folder.
 
 Uninstalling stops the app and removes auto-start, but leaves the `data` folder in place so your history is not lost. Delete the install folder manually if you want it gone.
 
